@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Workers</title>
+</head>
+<body>
+<h1>All workers</h1>
+{% for worker in workers %}
+    <h3>{{ worker.position }}</h3>
+    <p>First name: {{ worker.first_name }}</p>
+    <p>Last name: {{ worker.last_name }}</p>
+{% endfor %}
+
+</body>
+</html>
