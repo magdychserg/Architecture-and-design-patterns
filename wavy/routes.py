@@ -6,4 +6,5 @@ routes = {
     '/accountant/': accountant_view,
     '/specialist/': specialist_view,
     '/about/': about_view,
+    '/contacts/': contact_view,
 }
