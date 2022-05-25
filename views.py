@@ -1,6 +1,6 @@
 import datetime
 import os
-from wavy.templates import rendering
+from framework.templates import rendering
 from workers import workers
 
 
