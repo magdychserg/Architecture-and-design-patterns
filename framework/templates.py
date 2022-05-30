@@ -2,7 +2,7 @@ from jinja2 import FileSystemLoader
 from jinja2.environment import Environment
 
 
-def render_(template_name, folder='templates', **kwargs):
+def rendering(template_name, folder='templates', **kwargs):
 
     env = Environment()
     env.loader = FileSystemLoader(folder)
