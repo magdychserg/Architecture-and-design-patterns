@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+    Список курсов
+{% endblock %}
+{% block body %}
+    {% include "includes/inc-menu.html" %}
+    <h1>Список категорий</h1>
+    <ul class="list-group">
+        {% for item in objects_list %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ item.name }}
+                <span class="badge bg-primary rounded-pill">{{ item.course_count() }} курсов</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="link" href="/create-category/">Создать категорию...</a>
+{% endblock %}
