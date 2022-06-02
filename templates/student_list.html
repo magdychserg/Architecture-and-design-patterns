@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+    Список студентов
+{% endblock %}
+{% block body %}
+    <h2>Список студентов</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Студент</th>
+            <th scope="col">Курсы</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in objects_list %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>
+                    <ul>
+                        {% if item.courses|count == 0 %}
+                            <a class="link text-decoration-none" href="/add-student/">Определить студента...</a>
+                        {% else %}
+                            {% for course in item.courses %}
+                                <li>{{ course.name }}</li>
+                            {% endfor %}
+                            <li><a class="link text-decoration-none" href="/add-student/">Добавить...</a></li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="link text-decoration-none" href="/create-student/">Добавить студента...</a>
+{% endblock %}
