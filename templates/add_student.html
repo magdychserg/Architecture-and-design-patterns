@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+    Создание студента
+{% endblock %}
+{% block body %}
+    <h2>Запись студента на курс</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="course">Курс</label>
+            <select class="form-select" name="course_name" id="course">
+                {% for item in courses %}
+                    <option value="{{ item.name }}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="student">Студент</label>
+            <select class="form-select" name="student_name" id="student">
+                {% for item in students %}
+                    <option value="{{ item.name }}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Записать</button>
+    </form>
+{% endblock %}
