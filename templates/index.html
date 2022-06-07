@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+    Главная
+{% endblock %}
+{% block body %}
+    {% include "includes/inc-menu.html" %}
+    <h1 style="text-align: center; margin-top: 30px;">Образовательный сайт</h1>
+    <h3>Список курсов:</h3>
+    <ul class="list-group">
+        {% if objects_list %}
+            {% for item in objects_list %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ item.name }}
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>Нет доступных курсов. <a class="link" href="/create-course/">Создать...</a></p>
+        {% endif %}
+    </ul>
+{% endblock %}
