@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    Создание курса
+{% endblock %}
+{% block body %}
+    {% include "includes/inc-menu.html" %}
+    <h1>Создание категории</h1>
+    <form method="post">
+        <div class="mb-3">
+            <input type="text" class="form-control mb-3" name="name" placeholder="Название">
+        </div>
+        <button type="submit" class="btn btn-success">Сохранить</button>
+    </form>
+{% endblock %}

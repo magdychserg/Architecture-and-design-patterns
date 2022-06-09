@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+    Создание курса
+{% endblock %}
+{% block body %}
+    {% include "includes/inc-menu.html" %}
+    <h1>Создание курса</h1>
+    <form method="post">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="name" placeholder="Название">
+        </div>
+        <div class="mb-3">
+            <select class="form-select" name="category_id">
+                {% if categories|count == 0 %}
+                    <option selected>Категорий нет.</option>
+                {% else %}
+                    <option selected>Выберите категорию</option>
+                {% endif %}
+                {% for item in categories %}
+                    <option value="{{ item.id }}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+            {% if categories|count == 0 %}
+                <a class="nav-link" href="/create-category/">
+                    Создать категорию
+                </a>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-success">Сохранить</button>
+    </form>
+{% endblock %}
