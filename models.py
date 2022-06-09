@@ -1,5 +1,4 @@
 import jsonpickle as jsonpickle
-
 from framework.reuse_patterns.observer import Subject, Observer
 from framework.reuse_patterns.prototypes import PrototypeMixin
 from my_orm.unitofwork import DomainObject
@@ -14,7 +13,7 @@ class Teacher(User):
     pass
 
 
-class Student(User,DomainObject):
+class Student(User, DomainObject):
 
     def __init__(self, name):
         self.courses = []
@@ -89,40 +88,6 @@ class CourseFactory:
         return cls.types[type_](name, category)
 
 
-class TrainingSite:
-    # Интерфейс
-    def __init__(self):
-        self.teachers = []
-        self.students = []
-        self.courses = []
-        self.categories = []
-
-    def create_user(self, type_, name):
-        return UserFactory.create(type_, name)
-
-    def create_category(self, name, category=None):
-        return Category(name, category)
-
-    def find_category_by_id(self, id):
-        for item in self.categories:
-            if item.id == id:
-                return item
-        raise Exception(f'Нет категории с id = {id}')
-
-    def create_course(self, type_, name, category):
-        return CourseFactory.create(type_, name, category)
-
-    def get_course(self, name) -> Course:
-        for item in self.courses:
-            if item.name == name:
-                return item
-
-    def get_student(self, name) -> Student:
-        for item in self.students:
-            if item.name == name:
-                return item
-
-
 class SmsNotifier(Observer):
 
     def update(self, subject: Course):
@@ -145,27 +110,6 @@ class BaseSerializer:
 
     def load(self, data):
         return jsonpickle.loads(data)
-
-# Интерактивный курс
-class InteractiveCourse(Course):
-    pass
-
-
-# Курс в записи
-class RecordCourse(Course):
-    pass
-
-
-# Фабрика курсов
-class CourseFactory:
-    types = {
-        'interactive': InteractiveCourse,
-        'record': RecordCourse
-    }
-
-    @classmethod
-    def create(cls, type_, name, category):
-        return cls.types[type_](name, category)
 
 
 # Основной класс - интерфейс проекта
